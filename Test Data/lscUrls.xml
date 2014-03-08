@@ -1,0 +1,433 @@
+<config>
+	<LenovoRegisterWebsite>http://www.lenovo.com/registration/index.html
+	</LenovoRegisterWebsite>
+
+	<FeedbackURL>https://www.surveymonkey.com/s/LSCremove</FeedbackURL>
+	<FeedbackLSCURL>https://www.surveymonkey.com/s/LenovoSolutionCtr
+	</FeedbackLSCURL>
+
+	<AntivirusIdeaURL>http://www.mcafee.com/lenovotrialVSP
+	</AntivirusIdeaURL>
+	<AntivirusThinkURL>http://www.norton.com/lenovo_download
+	</AntivirusThinkURL>
+
+	<PredictiveCheckURL>http://download.lenovo.com/ibmdl/pub/pc/pccbbs/thinkvantage_en/LSC/predictive/productList.xml
+	</PredictiveCheckURL>
+
+	<LSCUpdateURL>http://download.lenovo.com/ibmdl/pub/pc/pccbbs/thinkvantage_en/LSC/updates/update.xml
+	</LSCUpdateURL>
+	<InternetAccessConnectionURL>detail.page?LegacyDocID=MIGR-61432#connections
+	</InternetAccessConnectionURL>
+
+	<PremiumSupportPhoneNumber_NA>1-855-271-3878
+	</PremiumSupportPhoneNumber_NA>
+	<PremiumSupportPhoneNumber_UK>091-16136136
+	</PremiumSupportPhoneNumber_UK>
+	<PremiumSupportPhoneNumber_IE>1580 997144
+	</PremiumSupportPhoneNumber_IE>
+	<PremiumSupportPhoneNumber_DE>0900 1 530 450
+	</PremiumSupportPhoneNumber_DE>
+	<PremiumSupportPhoneNumber_AU>0900 400825
+	</PremiumSupportPhoneNumber_AU>
+
+	<LenovoBlog>http://lenovo.com/{0}/</LenovoBlog>
+	
+	<!-- 
+	
+		Some countries doesn't have their native language. 
+		
+		Taking this one out:
+		
+		<LenovoWebSupport>http://support.lenovo.com/{0}/</LenovoWebSupport>
+		
+		And setting the URL's for all the LSC supported countries :
+	
+	-->
+	
+	<LenovoWebSupport_da_DK>http://support.lenovo.com/en_DK/</LenovoWebSupport_da_DK>
+	<LenovoWebSupport_de_DE>http://support.lenovo.com/de_DE/</LenovoWebSupport_de_DE>
+	<LenovoWebSupport_en_US>http://support.lenovo.com/en_US/</LenovoWebSupport_en_US>
+	<LenovoWebSupport_es_ES>http://support.lenovo.com/es_ES/</LenovoWebSupport_es_ES> <!-- Currently doesn't exist -->
+	<LenovoWebSupport_fi_FI>http://support.lenovo.com/en_FI/</LenovoWebSupport_fi_FI>
+	<LenovoWebSupport_fr_FR>http://support.lenovo.com/fr_FR/</LenovoWebSupport_fr_FR>
+	<LenovoWebSupport_it_IT>http://support.lenovo.com/it_IT/</LenovoWebSupport_it_IT> <!-- Currently doesn't exist -->
+	<LenovoWebSupport_ja_JP>http://support.lenovo.com/ja_JP/</LenovoWebSupport_ja_JP>
+	<LenovoWebSupport_ko_KR>http://support.lenovo.com/ko_KR/</LenovoWebSupport_ko_KR>
+	<LenovoWebSupport_nb_NO>http://support.lenovo.com/en_NO/</LenovoWebSupport_nb_NO>
+	<LenovoWebSupport_nl_NL>http://support.lenovo.com/en_NL/</LenovoWebSupport_nl_NL>
+	<LenovoWebSupport_pl_PL>http://support.lenovo.com/pl_PL/</LenovoWebSupport_pl_PL>
+	<LenovoWebSupport_pt_BR>http://support.lenovo.com/pt_BR/</LenovoWebSupport_pt_BR>
+	<LenovoWebSupport_pt_PT>http://support.lenovo.com/pt_PT/</LenovoWebSupport_pt_PT>
+	<LenovoWebSupport_ru_RU>http://support.lenovo.com/ru_RU/</LenovoWebSupport_ru_RU>
+	<LenovoWebSupport_sv_SE>http://support.lenovo.com/en_SE/</LenovoWebSupport_sv_SE>
+	<LenovoWebSupport_zh_CN>http://support.lenovo.com/zh_CN/</LenovoWebSupport_zh_CN>
+	<LenovoWebSupport_zh_HK>http://support.lenovo.com/zh_HK/</LenovoWebSupport_zh_HK>
+	<LenovoWebSupport_zh_TW>http://support.lenovo.com/zh_TW/</LenovoWebSupport_zh_TW>
+	
+	<LenovoForum>http://forums.lenovo.com/</LenovoForum>
+	<LenovoVirtualAgent>http://www5.nohold.net/Lenovo/Loginr.aspx?pid=3&amp;login=1
+	</LenovoVirtualAgent>
+	<RNRDownload>detail.page?LegacyDocID=MIGR-4Q2QAK</RNRDownload>	
+	<TVSUDownload>detail.page?LegacyDocID=TVSU-UPDATE
+	</TVSUDownload>
+	<GoToWebsiteUpdateIdea>http://consumersupport.lenovo.com/{0}/DriversDownloads/drivers.html
+	</GoToWebsiteUpdateIdea>
+
+	<ProductRegistrationServerAdress>http://www.onlineregister.com/lenovo/REST/serial/{0}
+	</ProductRegistrationServerAdress>
+
+	<LenovoOnlineRepairThink>http://support1.lenovo.com.cn/lenovo/wsi/wsbx/think/
+	</LenovoOnlineRepairThink>
+	<LenovoOnlineRepairIdea>http://support1.lenovo.com.cn/lenovo/wsi/wsbx/lenovo/
+	</LenovoOnlineRepairIdea>
+	<LenovoAsk>http://ask.lenovo.com.cn </LenovoAsk>
+	<LenovoRobot>http://support3.lenovo.com.cn/indexx.jsp</LenovoRobot>
+	<LenovoExpertOnline>http://serviceshop.lenovo.com.cn/tencent/jiasu.aspx
+	</LenovoExpertOnline>
+	<LenovoMoreHelps>http://support.lenovo.com.cn</LenovoMoreHelps>
+	<GoToWebHelp>http://download.lenovo.com/lenovo/lsc/help/src/locale/{0}/index.html
+	</GoToWebHelp>
+
+	<!-- Download Power Manager - LENOVO -->
+	<PMDownload>detail.page?LegacyDocID=MIGR-61432#power
+	</PMDownload>
+
+	<!-- Download Energy Manager - THINK -->
+	<EMDownload>downloads/default.page?
+	</EMDownload>
+	<FingerPrintDownload>detail.page?LegacyDocID=MIGR-61432#fingerprint
+	</FingerPrintDownload> <!-- XML maquina\url -->
+	<FingerPrintTrueSuiteDownload>detail.page?LegacyDocID=MIGR-61432
+	</FingerPrintTrueSuiteDownload> <!-- XML maquina\url -->
+
+	<ExtendWarrantySimpChinese><![CDATA[http://serviceshop.lenovo.com.cn/ProductService/Search/default.aspx?SourceFlag=LSC&CheckCode=Test123&cid=ww:direct:Kt8Uos]]></ExtendWarrantySimpChinese> <!-- XML maquina\url -->
+	<ExtendWarranty>product-service/warranty-upgrade/default.page?cid=ww:direct:Kt8Uos
+	</ExtendWarranty>	<!-- XML maquina\url -->
+
+	<!-- START: Shop Now Links, for each country -->
+	<ShopBatteryURL>http://shop.lenovo.com/SEUILibrary/controller/e/web/LenovoPortal/{0}/catalog.workflow:find-compatible-items?category-id=4364BD0F20B94413B5AD6E684D2848E9&amp;model-number={1}&amp;cat=1&amp;cid=ww:direct:Kt8Uos
+	</ShopBatteryURL>
+	<ShopMemoryURL>http://shop.lenovo.com/SEUILibrary/controller/e/web/LenovoPortal/{0}/catalog.workflow:find-compatible-items?category-id=20A0DF223E104135B445F3A1A8CE1F31&amp;model-number={1}&amp;cat=1&amp;cid=ww:direct:Kt8Uos
+	</ShopMemoryURL>
+	<ShopStorage>http://shop.lenovo.com/noind/{0}/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage>
+
+	<!-- Shop Battery Now Links -->
+	<ShopBatteryURL_da_DK>http://shop.lenovo.com/dkind/dk/en/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_da_DK>
+	<ShopBatteryURL_de_DE>http://shop.lenovo.com/deweb/de/de/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_de_DE>
+	<ShopBatteryURL_en_US>http://shop.lenovo.com/us/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_en_US>
+	<ShopBatteryURL_es_ES>http://shop.lenovo.com/esind/es/es/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_es_ES>
+	<ShopBatteryURL_fi_FI>http://shop.lenovo.com/fiweb/fi/fi/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_fi_FI>
+	<ShopBatteryURL_fr_FR>http://shop.lenovo.com/frind/fr/fr/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_fr_FR>
+	<ShopBatteryURL_it_IT>http://shop.lenovo.com/itind/it/it/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_it_IT>
+	<ShopBatteryURL_ja_JP>http://shopap.lenovo.com/jp/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_ja_JP>
+	<ShopBatteryURL_ko_KR>http://shopap.lenovo.com/kr/ko/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_ko_KR>
+	<ShopBatteryURL_nb_NO>http://shop.lenovo.com/noind/no/en/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_nb_NO>
+	<ShopBatteryURL_nl_NL>http://shop.lenovo.com/nlind/nl/en/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_nl_NL>
+	<ShopBatteryURL_pl_PL>http://shop.lenovo.com/pl/pl/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_pl_PL>
+	<ShopBatteryURL_pt_BR>http://shop.lenovo.com/brweb/br/pt/acessorios/energia?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_pt_BR>
+	<ShopBatteryURL_ru_RU>http://shopap.lenovo.com/ru/ru/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_ru_RU>
+	<ShopBatteryURL_sv_SE>http://shop.lenovo.com/seind/se/en/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_sv_SE>
+	<ShopBatteryURL_zh_CN>http://shop.lenovo.com.cn/?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_zh_CN>
+	<ShopBatteryURL_zh_HK>http://shopap.lenovo.com/hk/en/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_zh_HK>
+	<ShopBatteryURL_zh_TW>http://shopap.lenovo.com/tw/zh/accessories/batteries-power-adapters?cid=ww:direct:Kt8Uos
+	</ShopBatteryURL_zh_TW>
+
+	<!-- Shop Memory Now Links -->
+	<ShopMemoryURL_da_DK>http://shop.lenovo.com/dkind/dk/en/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_da_DK>
+	<ShopMemoryURL_de_DE>http://shop.lenovo.com/deweb/de/de/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_de_DE>
+	<ShopMemoryURL_en_US>http://shop.lenovo.com/us/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_en_US>
+	<ShopMemoryURL_es_ES>http://shop.lenovo.com/esind/es/es/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_es_ES>
+	<ShopMemoryURL_fi_FI>http://shop.lenovo.com/fiind/fi/en/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_fi_FI>
+	<ShopMemoryURL_fr_FR>http://shop.lenovo.com/frind/fr/fr/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_fr_FR>
+	<ShopMemoryURL_it_IT>http://shop.lenovo.com/itind/it/it/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_it_IT>
+	<ShopMemoryURL_ja_JP>http://shopap.lenovo.com/jp/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_ja_JP>
+	<ShopMemoryURL_ko_KR>http://shopap.lenovo.com/kr/ko/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_ko_KR>
+	<ShopMemoryURL_nb_NO>http://shop.lenovo.com/noind/no/en/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_nb_NO>
+	<ShopMemoryURL_nl_NL>http://shop.lenovo.com/nlind/nl/en/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_nl_NL>
+	<ShopMemoryURL_pl_PL>http://shop.lenovo.com/pl/pl/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_pl_PL>
+	<ShopMemoryURL_pt_BR>http://shop.lenovo.com/brweb/br/pt/acessorios/memorias?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_pt_BR>
+	<ShopMemoryURL_ru_RU>http://shopap.lenovo.com/ru/ru/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_ru_RU>
+	<ShopMemoryURL_sv_SE>http://shop.lenovo.com/seind/se/en/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_sv_SE>
+	<ShopMemoryURL_zh_CN>http://shop.lenovo.com.cn/?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_zh_CN>
+	<ShopMemoryURL_zh_HK>http://shopap.lenovo.com/hk/en/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_zh_HK>
+	<ShopMemoryURL_zh_TW>http://shopap.lenovo.com/tw/zh/accessories/memory?cid=ww:direct:Kt8Uos
+	</ShopMemoryURL_zh_TW>
+
+	<!-- Shop Storage Now Links -->
+	<ShopStorage_da_DK>http://shop.lenovo.com/dkind/dk/en/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_da_DK>
+	<ShopStorage_de_DE>http://shop.lenovo.com/deweb/de/de/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_de_DE>
+	<ShopStorage_en_US>http://shop.lenovo.com/us/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_en_US>
+	<ShopStorage_es_ES>http://shop.lenovo.com/esind/es/es/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_es_ES>
+	<ShopStorage_fi_FI>http://shop.lenovo.com/fiind/fi/en/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_fi_FI>
+	<ShopStorage_fr_FR>http://shop.lenovo.com/frind/fr/fr/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_fr_FR>
+	<ShopStorage_it_IT>http://shop.lenovo.com/itind/it/it/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_it_IT>
+	<ShopStorage_ja_JP>http://shopap.lenovo.com/jp/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_ja_JP>
+	<ShopStorage_ko_KR>http://shopap.lenovo.com/kr/ko/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_ko_KR>
+	<ShopStorage_nb_NO>http://shop.lenovo.com/noind/no/en/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_nb_NO>
+	<ShopStorage_nl_NL>http://shop.lenovo.com/nlind/nl/en/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_nl_NL>
+	<ShopStorage_pl_PL>http://shop.lenovo.com/pl/pl/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_pl_PL>
+	<ShopStorage_pt_BR>http://shop.lenovo.com/brweb/br/pt/acessorios/armazenamento?cid=ww:direct:Kt8Uos
+	</ShopStorage_pt_BR>
+	<ShopStorage_ru_RU>http://shopap.lenovo.com/ru/ru/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_ru_RU>
+	<ShopStorage_sv_SE>http://shop.lenovo.com/seind/se/en/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_sv_SE>
+	<ShopStorage_zh_CN>http://shop.lenovo.com.cn/?cid=ww:direct:Kt8Uos
+	</ShopStorage_zh_CN>
+	<ShopStorage_zh_HK>http://shopap.lenovo.com/hk/en/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_zh_HK>
+	<ShopStorage_zh_TW>http://shopap.lenovo.com/tw/zh/accessories/storage?cid=ww:direct:Kt8Uos
+	</ShopStorage_zh_TW>
+	<!-- END: Shop Now Links, for each country -->
+
+	<!-- Fingerprint Links -->
+	<EdgeAuthentecDownload_CN>http://think.lenovo.com.cn/support/driver/viewdriver.aspx?sn={1}
+	</EdgeAuthentecDownload_CN>
+	
+	
+	<EdgeAuthentecDownload_ALL>downloads/detail.page?DocID=DS033624
+	</EdgeAuthentecDownload_ALL>
+	<ThinkAuthentecDownload_CN>http://think.lenovo.com.cn/support/driver/viewdriver.aspx?sn={1}
+	</ThinkAuthentecDownload_CN>
+	<ThinkAuthentecDownload_ALL_32>downloads/detail.page?DocID=DS029766
+	</ThinkAuthentecDownload_ALL_32>
+	<ThinkAuthentecDownload_ALL_64>downloads/detail.page?DocID=DS029769
+	</ThinkAuthentecDownload_ALL_64>
+	<EdgeValidityDownload_CN>http://think.lenovo.com.cn/support/driver/viewdriver.aspx?sn={1}
+	</EdgeValidityDownload_CN> <!-- It's {1} because of the frontend's logic that replace {0} by the language 
+		of machine. In this case we want to replace by serial number -->
+	<EdgeValidityDownload_ALL>downloads/detail.page?DocID=DS034485
+	</EdgeValidityDownload_ALL>
+	<ThinkValidityDownload_CN>http://think.lenovo.com.cn/support/driver/viewdriver.aspx?sn={1}
+	</ThinkValidityDownload_CN> <!-- It's {1} because of the frontend's logic that replace {0} by the language 
+		of machine. In this case we want to replace by serial number -->
+	<ThinkValidityDownload_ALL>downloads/detail.page?DocID=DS034486
+	</ThinkValidityDownload_ALL>
+
+	<!-- Premium Support Links -->
+	<PremiumSupportLearnMore_NA>https://lenovopfs.suth.com/annualfullcoverage.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportLearnMore_NA>
+	<PremiumSupportPrinterPeripheralSetup_NA>https://lenovopfs.suth.com/printerperipheral.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportPrinterPeripheralSetup_NA>
+	<PremiumSupportBasicSoftwareInstallationService_NA>https://lenovopfs.suth.com/basicswinstall.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportBasicSoftwareInstallationService_NA>
+	<PremiumSupportPCPerformanceTuneup_NA>https://lenovopfs.suth.com/pcperformance.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportPCPerformanceTuneup_NA>
+	<PremiumSupportFilePrinterSharingService_NA>https://lenovopfs.suth.com/fileprintersharing.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportFilePrinterSharingService_NA>
+	<PremiumSupportOperatingSystemDataRecoveryService_NA>https://lenovopfs.suth.com/osanddatarecovery.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportOperatingSystemDataRecoveryService_NA>
+	<PremiumSupportVirusRemovalService_NA>https://lenovopfs.suth.com/virusmalwareremoval.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportVirusRemovalService_NA>
+	<PremiumSupportNewPCSetupService_NA>https://lenovopfs.suth.com/newpcsetup.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportNewPCSetupService_NA>
+	<PremiumSupportWirelessSecuritySetup_NA>https://lenovopfs.suth.com/wirelesssecurity.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportWirelessSecuritySetup_NA>
+	<PremiumSupportConnectNetworkService_NA>https://lenovopfs.suth.com/connectnetwork.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportConnectNetworkService_NA>
+	<PremiumSupportInternetPerformanceOptimization_NA>https://lenovopfs.suth.com/internetperformance.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportInternetPerformanceOptimization_NA>
+	<PremiumSupportHomeOfficeNetworkSecuritySetup_NA>https://lenovopfs.suth.com/networkandsecurity.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportHomeOfficeNetworkSecuritySetup_NA>
+	<PremiumSupportWin8Training_NA>https://lenovopfs.suth.com/win8basic.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportWin8Training_NA>
+	<PremiumSupportWin8InstallationService_NA>https://lenovopfs.suth.com/win8install.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportWin8InstallationService_NA>
+	<PremiumSupportWin8UpgradeDataRestoreService_NA>https://lenovopfs.suth.com/win8upgrade.aspx?cid=ww:direct:Kt8Uos
+	</PremiumSupportWin8UpgradeDataRestoreService_NA>
+
+	<PremiumSupportDataBackup_UK>http://shop.lenovo.com/gb/en/Premium-Support/databackup.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportDataBackup_UK>
+	<PremiumSupportVirusRemovalService_UK>http://shop.lenovo.com/gb/en/Premium-Support/virusmalwareremoval.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportVirusRemovalService_UK>
+	<PremiumSupportSystemHealthCheck_UK>http://shop.lenovo.com/gb/en/Premium-Support/systemhealth.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportSystemHealthCheck_UK>
+	<PremiumSupportSoftwareInstallation_UK>http://shop.lenovo.com/gb/en/Premium-Support/softwareload.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportSoftwareInstallation_UK>
+	<PremiumSupportWin7Win8Installation_UK>http://shop.lenovo.com/gb/en/Premium-Support/win8-7.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportWin7Win8Installation_UK>
+	<PremiumSupportMicrosoftOffice_UK>http://shop.lenovo.com/gb/en/Premium-Support/microsoft.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportMicrosoftOffice_UK>
+	<PremiumSupportInstallingPeripheral_UK>http://shop.lenovo.com/gb/en/Premium-Support/printerperipheral.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportInstallingPeripheral_UK>
+	<PremiumSupportWiFiPrinterSetup_UK>http://shop.lenovo.com/gb/en/Premium-Support/printer-wirelss.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportWiFiPrinterSetup_UK>
+
+	<PremiumSupportDataBackup_IE>http://shop.lenovo.com/ie/en/Premium-Support/databackup.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportDataBackup_IE>
+	<PremiumSupportVirusRemovalService_IE>http://shop.lenovo.com/ie/en/Premium-Support/virusmalwareremoval.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportVirusRemovalService_IE>
+	<PremiumSupportSystemHealthCheck_IE>http://shop.lenovo.com/ie/en/Premium-Support/systemhealth.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportSystemHealthCheck_IE>
+	<PremiumSupportSoftwareInstallation_IE>http://shop.lenovo.com/ie/en/Premium-Support/softwareload.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportSoftwareInstallation_IE>
+	<PremiumSupportWin7Win8Installation_IE>http://shop.lenovo.com/ie/en/Premium-Support/win8-7.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportWin7Win8Installation_IE>
+	<PremiumSupportMicrosoftOffice_IE>http://shop.lenovo.com/ie/en/Premium-Support/microsoft.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportMicrosoftOffice_IE>
+	<PremiumSupportInstallingPeripheral_IE>http://shop.lenovo.com/ie/en/Premium-Support/printerperipheral.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportInstallingPeripheral_IE>
+	<PremiumSupportWiFiPrinterSetup_IE>http://shop.lenovo.com/ie/en/Premium-Support/printer-wirelss.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportWiFiPrinterSetup_IE>
+
+	<PremiumSupportDataBackup_DE>http://shop.lenovo.com/de/de/Premium-Support/databackup.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportDataBackup_DE>
+	<PremiumSupportVirusRemovalService_DE>http://shop.lenovo.com/de/de/Premium-Support/virusmalwareremoval.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportVirusRemovalService_DE>
+	<PremiumSupportSystemHealthCheck_DE>http://shop.lenovo.com/de/de/Premium-Support/systemhealth.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportSystemHealthCheck_DE>
+	<PremiumSupportSoftwareInstallation_DE>http://shop.lenovo.com/de/de/Premium-Support/softwareload.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportSoftwareInstallation_DE>
+	<PremiumSupportWin7Win8Installation_DE>http://shop.lenovo.com/de/de/Premium-Support/win8-7.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportWin7Win8Installation_DE>
+	<PremiumSupportMicrosoftOffice_DE>http://shop.lenovo.com/de/de/Premium-Support/microsoft.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportMicrosoftOffice_DE>
+	<PremiumSupportInstallingPeripheral_DE>http://shop.lenovo.com/de/de/Premium-Support/printerperipheral.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportInstallingPeripheral_DE>
+	<PremiumSupportWiFiPrinterSetup_DE>http://shop.lenovo.com/de/de/Premium-Support/printer-wirelss.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportWiFiPrinterSetup_DE>
+
+	<PremiumSupportDataBackup_AU>http://shop.lenovo.com/at/de/Premium-Support/databackup.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportDataBackup_AU>
+	<PremiumSupportVirusRemovalService_AU>http://shop.lenovo.com/at/de/Premium-Support/virusmalwareremoval.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportVirusRemovalService_AU>
+	<PremiumSupportSystemHealthCheck_AU>http://shop.lenovo.com/at/de/Premium-Support/systemhealth.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportSystemHealthCheck_AU>
+	<PremiumSupportSoftwareInstallation_AU>http://shop.lenovo.com/at/de/Premium-Support/softwareload.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportSoftwareInstallation_AU>
+	<PremiumSupportWin7Win8Installation_AU>http://shop.lenovo.com/at/de/Premium-Support/win8-7.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportWin7Win8Installation_AU>
+	<PremiumSupportMicrosoftOffice_AU>http://shop.lenovo.com/at/de/Premium-Support/microsoft.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportMicrosoftOffice_AU>
+	<PremiumSupportInstallingPeripheral_AU>http://shop.lenovo.com/at/de/Premium-Support/printerperipheral.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportInstallingPeripheral_AU>
+	<PremiumSupportWiFiPrinterSetup_AU>http://shop.lenovo.com/at/de/Premium-Support/printer-wirelss.html?cid=ww:direct:Kt8Uos
+	</PremiumSupportWiFiPrinterSetup_AU>
+
+	<!-- Crossloop Não é mais usado!
+	<CrossloopBackupLink>http://www.crossloop.com/products/pages/145/enhanced_backup_and_restore?src=toolbox
+	</CrossloopBackupLink>
+	<CrossloopSWUpdateLink>http://www.crossloop.com/products/pages/146/latest_software_and_driver_updates?src=toolbox
+	</CrossloopSWUpdateLink>
+	-->
+	<!-- China Links -->
+	<CN_RescueAndRecovery>http://think.lenovo.com.cn/software/ThinkVantage.aspx
+	</CN_RescueAndRecovery>
+	<CN_WebSupportLink>http://think.lenovo.com.cn</CN_WebSupportLink>
+	<CN_LenovoForum>http://thinkbbs.lenovo.com.cn</CN_LenovoForum>
+	<CN_VirtualAgent>http://chat.lenovo.com.cn</CN_VirtualAgent>
+	<CN_Support>http://serviceshop.lenovo.com.cn</CN_Support>
+	<CN_Shop_HardDrive>http://shop.lenovo.com.cn/?cid=ww:direct:Kt8Uos
+	</CN_Shop_HardDrive>
+	<CN_Shop_Memory>http://shop.lenovo.com.cn/?cid=ww:direct:Kt8Uos
+	</CN_Shop_Memory>
+	<CN_Shop_Battery>http://shop.lenovo.com.cn/?cid=ww:direct:Kt8Uos
+	</CN_Shop_Battery>
+	<CN_AccesInternetConnection>http://think.lenovo.com.cn/software/ThinkVantage.aspx
+	</CN_AccesInternetConnection>
+	<CN_FingerprintDownload>http://think.lenovo.com.cn/software/ThinkVantage.aspx
+	</CN_FingerprintDownload>
+	<CN_FingerprintDownload_TrueSuit>http://think.lenovo.com.cn/software/ThinkVantage.aspx
+	</CN_FingerprintDownload_TrueSuit>
+	<CN_TVSU>http://think.lenovo.com.cn/software/ThinkVantage.aspx
+	</CN_TVSU>
+	<CN_PM_Download>http://think.lenovo.com.cn/software/ThinkVantage.aspxk
+	</CN_PM_Download>
+
+	<!--Privacy Policy -->
+	<LenovoPrivacyPolicy_da_DK>http://www.lenovo.com/privacy/dk/da/
+	</LenovoPrivacyPolicy_da_DK>
+	<LenovoPrivacyPolicy_de_DE>http://www.lenovo.com/privacy/de/de/
+	</LenovoPrivacyPolicy_de_DE>
+	<LenovoPrivacyPolicy_en_US>http://www.lenovo.com/privacy/us/en/
+	</LenovoPrivacyPolicy_en_US>
+	<LenovoPrivacyPolicy_es_ES>http://www.lenovo.com/privacy/es/es/
+	</LenovoPrivacyPolicy_es_ES>
+	<LenovoPrivacyPolicy_fi_FI>http://www.lenovo.com/privacy/fi/en/
+	</LenovoPrivacyPolicy_fi_FI>
+	<LenovoPrivacyPolicy_fr_FR>http://www.lenovo.com/privacy/fr/fr/
+	</LenovoPrivacyPolicy_fr_FR>
+	<LenovoPrivacyPolicy_it_IT>http://www.lenovo.com/privacy/it/it/
+	</LenovoPrivacyPolicy_it_IT>
+	<LenovoPrivacyPolicy_ja_JP>http://www.lenovo.com/privacy/jp/ja/
+	</LenovoPrivacyPolicy_ja_JP>
+	<LenovoPrivacyPolicy_ko_KR>http://www.lenovo.com/privacy/kr/ko/
+	</LenovoPrivacyPolicy_ko_KR>
+	<LenovoPrivacyPolicy_nb_NO>http://www.lenovo.com/privacy/no/no/
+	</LenovoPrivacyPolicy_nb_NO>
+	<LenovoPrivacyPolicy_nl_NL>http://www.lenovo.com/privacy/nl/en/
+	</LenovoPrivacyPolicy_nl_NL>
+	<LenovoPrivacyPolicy_pl_PL>http://www.lenovo.com/privacy/pl/pl/
+	</LenovoPrivacyPolicy_pl_PL>
+	<LenovoPrivacyPolicy_pt_BR>http://www.lenovo.com/privacy/br/pt/
+	</LenovoPrivacyPolicy_pt_BR>
+	<LenovoPrivacyPolicy_pt_PT>http://www.lenovo.com/privacy/us/en/
+	</LenovoPrivacyPolicy_pt_PT>
+	<LenovoPrivacyPolicy_ru_RU>http://www.lenovo.com/privacy/ru/ru/
+	</LenovoPrivacyPolicy_ru_RU>
+	<LenovoPrivacyPolicy_sv_SE>http://www.lenovo.com/privacy/se/sv/
+	</LenovoPrivacyPolicy_sv_SE>
+	<LenovoPrivacyPolicy_zh_CN>http://www.lenovo.com/privacy/cn/zh/
+	</LenovoPrivacyPolicy_zh_CN>
+	<LenovoPrivacyPolicy_zh_HK>http://www.lenovo.com/privacy/hk/en/
+	</LenovoPrivacyPolicy_zh_HK>
+	<LenovoPrivacyPolicy_zh_TW>http://www.lenovo.com/privacy/tw/zh/
+	</LenovoPrivacyPolicy_zh_TW>
+
+	<LenovoSettingsDependingPackageDownload>http://www.lenovo.com/support/windows8/settingsdependency
+	</LenovoSettingsDependingPackageDownload>
+
+	<LogDirectory>ldiag</LogDirectory>
+	<LogBasePath>ProgramData\Lenovo</LogBasePath>
+	<LogFileName>ldiag.log</LogFileName>
+	<ErrorLogFileName>ldiag_errors.log</ErrorLogFileName>
+
+
+</config>
