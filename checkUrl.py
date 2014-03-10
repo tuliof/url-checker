@@ -4,9 +4,11 @@ import urllib2
 from threading import Thread
 import os
 import sys
+from optparse import OptionParser
 #import easy to use xml parser called minidom:
 from xml.dom.minidom import parseString
-#'C:\Program Files\Lenovo\Lenovo Solution Center\lscUrls.xml'
+# Benchmark for debug purposes
+import time
 
 class UrlCheck(object):
 	tag = ''
@@ -17,58 +19,72 @@ class UrlCheck(object):
 	def __init__(self, tag, url):
 		self.tag = tag
 		self.url = url
+		self.requestUrl = url
 
 	def redirected(self):
 		return self.url != self.requestUrl
 
 class UrlValidator(object):
-	urlXmlPath = ''
-	resultCsvPath = ''
+	_urlXmlPath = ''
+	_resultCsvPath = ''
+	_debugMode = False
+
+	def enableDebug(self):
+		self._debugMode = True
 
 	def __init__(self, urlXmlPath, resultCsvPath):
-		self.urlXmlPath = urlXmlPath
+		self._urlXmlPath = urlXmlPath
 
 		if len(resultCsvPath) == 0:
-			self.resultCsvPath = os.getcwd() + '\\urlCheck.csv'
+			self._resultCsvPath = os.getcwd() + '\\urlCheck.csv'
 		else:
-			self.resultCsvPath = resultCsvPath
-		print 'Path to csv file: ' + self.resultCsvPath
+			self._resultCsvPath = resultCsvPath
+
+		if self._debugMode:
+			print 'Path to input file: %s' % self._urlXmlPath
+			print 'Path to output file: %s' % self._resultCsvPath
 
 	def validate(self):
-		# check if target file is free to use
-		if self.isFileOpen(self.resultCsvPath):
+		if self.checkInputFile(self._urlXmlPath) == False:
 			sys.exit()
 		# read urls from the xml file
-		urlCheckList = self.readLscUrls(self.urlXmlPath)
+		urlCheckList = self.readLscUrls(self._urlXmlPath)
 		# test the urls
-		self.checkUrl(urlCheckList)
+		finalUrlCheckList = self.checkUrl(urlCheckList)
 		# write the results to a csv
-		finalUrlCheckList = self.generateReport(urlCheckList)
-		print 'Number of URLs: %s, Processed: %s' % (len(urlCheckList), len(finalUrlCheckList))
+		self.generateReport(finalUrlCheckList)
+		if self._debugMode:
+			print 'Number of URLs: %s, Processed: %s' % (len(urlCheckList), len(finalUrlCheckList))
 
 	def checkUrl(self, urlCheckList):
 		finalUrlCheckList = []
 		for urlCheck in urlCheckList:
-			print 'testing url: %s' % urlCheck.url
+			if self._debugMode:
+				print 'Testing url: %s' % urlCheck.url
 			try:
 				response = urllib2.urlopen(urlCheck.url)
 				urlCheck.requestUrl = response.geturl()
 				urlCheck.code = response.code
 				if urlCheck.redirected:
+					# Don't know how to differentiate between a 301 and a 302.
 					urlCheck.code = 301
 				response.close()
 				finalUrlCheckList.append(urlCheck)
 			except urllib2.URLError as e:
 				#failed to reach server
-				print 'URLError: %s' % e.reason
+				if self._debugMode:
+					print 'URLError: %s' % e.reason
 				if str(e.reason).lower() == 'not found':
 					urlCheck.code = 404
 				else:
 					urlCheck.code = e.reason
 			except urllib2.HTTPError as e:
 				urlCheck.code = e.code
-			print 'response code: %s' % ('301/302' if urlCheck.requestUrl != urlCheck.url else urlCheck.code)
-			return finalUrlCheckList
+			if self._debugMode:
+				print 'Response code: %s' % urlCheck.code
+				if urlCheck.redirected:
+					print 'Redirected to %s' % urlCheck.requestUrl
+		return finalUrlCheckList
 
 	def testUrlThreaded(self, urlCheckList, numberOfThreads):
 		# Start the threads, passing a list for each one to process
@@ -79,16 +95,39 @@ class UrlValidator(object):
 
 	def generateReport(self, urlCheckList):
 		try:
-			f = open(self.resultCsvPath, 'w')
+			f = open(self._resultCsvPath, 'w')
 			f.write('Tag,Url,HTTP Code,Redirected,New Url\n')
 			for urlCheck in urlCheckList:
-				print '%s, %s, %s, %s\n' % (urlCheck.tag, urlCheck.url, urlCheck.code, urlCheck.requestUrl if urlCheck.redirected() else '')
+				if self._debugMode:
+					print '%s, %s, %s, %s\n' % (urlCheck.tag, urlCheck.url, urlCheck.code, urlCheck.requestUrl if urlCheck.redirected() else '')
 				f.write('%s, %s, %s, %s\n' % (urlCheck.tag, urlCheck.url, urlCheck.code, urlCheck.requestUrl if urlCheck.redirected() else ''))
 		except IOError as err:
-			print 'Error: Could\'t open or create file. Reason: ' + err.strerror
+			if self._debugMode:
+				print 'Error: Could\'t open or create file. Reason: ' + err.strerror
 			sys.exit()
 		else:
 			f.close()
+
+	def checkInputFile(self, filePath):
+		isFileOk = False
+		doExist = os.path.exists(filePath)
+		isFile = os.path.isfile(filePath)
+		
+		if doExist and isFile:
+			isFileOk = True
+		else:
+			if self._debugMode:
+				print "File '%s' does not exist or isn't a file." % self._urlXmlPath
+
+		return isFileOk
+
+	def checkOutputFile(self, filePath):
+		if isFileOk:
+			# check if target file is free to use
+			if self.isFileOpen(filePath):
+				isFileOk = False
+				if self._debugMode:
+					print "File '%s' is open, please close it." % self._urlXmlPath
 
 	def isFileOpen(self, filePath):
 		isOpen = False
@@ -96,7 +135,6 @@ class UrlValidator(object):
 			f = open(filePath, 'w')
 			f.close()
 		except IOError:
-			print "File @ %s is open, please close it." % filePath
 			isOpen = True
 		return isOpen
 
@@ -107,7 +145,8 @@ class UrlValidator(object):
 			#convert to string:
 			data = f.read()
 		except IOError as err:
-			print 'Error: Could\'t open or create file. Reason: ' + err.strerror
+			if self._debugMode:
+				print 'Error: Could\'t read file. Reason: ' + err.strerror
 			sys.exit()
 		else:
 			#close file because we dont need it anymore:
@@ -119,7 +158,7 @@ class UrlValidator(object):
 		for urlNode in urlNodeList.childNodes:
 			if urlNode.nodeType == urlNode.ELEMENT_NODE:
 				tagUrl = urlNode.toxml().replace('<'+urlNode.nodeName+'>','').replace('</'+urlNode.nodeName+'>','').strip()
-				if tagUrl.find("http://") != -1 or tagUrl.find("https://") != -1:
+				if tagUrl[0:8].find('http://') != -1 or tagUrl[0:8].find('https://') != -1:
 					urlList.append(UrlCheck(urlNode.nodeName.strip(), tagUrl))
 		return urlList
 
@@ -138,45 +177,53 @@ class UrlValidator(object):
 		print headers
 
 def main():
-	usage = "usage: %prog [options] urlsFile"
-    outFile = os.path.dirname(os.path.abspath(__file__))
-    parser = OptionParser(usage=usage, version="%prog 1.0")
-    parser.add_option("-d", "--debug",
-                      action="store_true", dest="debug", default=False,
-                      help="print the url and the request result[default: %default]")
-    parser.add_option("-o", "--output", dest="outputFile", metavar="FILE",
-                      default="20465461654",
-                      help="write output to FILE, will write result.csv \
-                      to same path as the program if none is provided.")
-    (options, args) = parser.parse_args()
-    if options.debug:
-        print "Debug is on."
-    if options.outputFile == "20465461654":
-        outFile = os.path.join(outFile, "result.csv")
-    else:
-        outFile = options.outputFile
-    print "Path to output file " + outFile
-    if len(args) != 1:
-        parser.error("incorrect number of arguments")
-    else:
-        doExist = os.path.exists(args[0])
-        if doExist:
-            print "OK"
-        else:
-            print "KO"
-	#urlValidator = UrlValidator('C:\Program Files\Lenovo\Lenovo Solution Center\lscUrls.xml', 'C:\Users\saotfern\Desktop\urlCheck.csv')
-	#urlValidator.validate('C:\Users\saotfern\Desktop\lscUrls_short.xml')
-	urlValidator = UrlValidator('C:\Program Files\Lenovo\Lenovo Solution Center\lscUrls.xml', '')
-	urlValidator.validate()
+	usage = 'usage: %prog [options] urlsFile'
+	outFile = os.path.dirname(os.path.abspath(__file__))
+	inFile = ''
+	parser = OptionParser(usage=usage, version='%prog 1.0')
+	parser.add_option('-d', '--debug', 
+		action='store_true', dest='debug', default=False, 
+		help='print the url and the request result[default: %default]')
+	parser.add_option('-o', '--output', dest='outputFile', metavar='FILE', 
+		default=':@20465461654', 
+		help='write output to FILE, will write result.csv \
+		to same path as the program if none is provided.')
+	(options, args) = parser.parse_args()
+	
+	if options.outputFile == ':@20465461654':
+		outFile = os.path.join(outFile, 'result.csv')
+	else:
+		outFile = options.outputFile
+	
+	if len(args) != 1:
+		parser.error('incorrect number of arguments')
+	else:
+		inFile = args[0]
 
+	# Create the url validator and run the check
+	tstart = time.clock()
+	urlValidator = UrlValidator(inFile, outFile)
+	if options.debug:
+		urlValidator.enableDebug()
+	urlValidator.validate()
+	tend = time.clock()
+	if options.debug:
+		print 'Time spent %.2gs' % (tend-tstart)
+	
+
+def testProgram():
+	urlValidator = UrlValidator('C:\Program Files\Lenovo\Lenovo Solution Center\lscUrls.xml', 'C:\Users\saotfern\Desktop\urlCheck.csv')
+	#urlValidator.validate('C:\Users\saotfern\Desktop\lscUrls_short.xml')
 
 if __name__ == "__main__":
 	main()
+	#testProgram()
 
 '''
 TODO:
-. Receive command line arguments - Path to xml and csv
-. Return usage in case no arguments are passed
-. Generate executable
+OK Receive command line arguments - Path to xml and csv
+OK Return usage in case no arguments are passed
+OK Generate executable
 . Add argument -D for debug - it'll print each url to the shell
+. Check an implementation of checkUrl using -> http://docs.python.org/2/library/httplib.html
 '''
