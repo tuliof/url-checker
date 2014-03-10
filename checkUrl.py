@@ -137,12 +137,41 @@ class UrlValidator(object):
 		print '---------'
 		print headers
 
+def main():
+	usage = "usage: %prog [options] urlsFile"
+    outFile = os.path.dirname(os.path.abspath(__file__))
+    parser = OptionParser(usage=usage, version="%prog 1.0")
+    parser.add_option("-d", "--debug",
+                      action="store_true", dest="debug", default=False,
+                      help="print the url and the request result[default: %default]")
+    parser.add_option("-o", "--output", dest="outputFile", metavar="FILE",
+                      default="20465461654",
+                      help="write output to FILE, will write result.csv \
+                      to same path as the program if none is provided.")
+    (options, args) = parser.parse_args()
+    if options.debug:
+        print "Debug is on."
+    if options.outputFile == "20465461654":
+        outFile = os.path.join(outFile, "result.csv")
+    else:
+        outFile = options.outputFile
+    print "Path to output file " + outFile
+    if len(args) != 1:
+        parser.error("incorrect number of arguments")
+    else:
+        doExist = os.path.exists(args[0])
+        if doExist:
+            print "OK"
+        else:
+            print "KO"
+	#urlValidator = UrlValidator('C:\Program Files\Lenovo\Lenovo Solution Center\lscUrls.xml', 'C:\Users\saotfern\Desktop\urlCheck.csv')
+	#urlValidator.validate('C:\Users\saotfern\Desktop\lscUrls_short.xml')
+	urlValidator = UrlValidator('C:\Program Files\Lenovo\Lenovo Solution Center\lscUrls.xml', '')
+	urlValidator.validate()
 
 
-#urlValidator = UrlValidator('C:\Program Files\Lenovo\Lenovo Solution Center\lscUrls.xml', 'C:\Users\saotfern\Desktop\urlCheck.csv')
-#urlValidator.validate('C:\Users\saotfern\Desktop\lscUrls_short.xml')
-urlValidator = UrlValidator('C:\Program Files\Lenovo\Lenovo Solution Center\lscUrls.xml', '')
-urlValidator.validate()
+if __name__ == "__main__":
+	main()
 
 '''
 TODO:
