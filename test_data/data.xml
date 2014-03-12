@@ -1,0 +1,7 @@
+<config>
+	<!--<LenovoBlog>http://lenovo.com/{0}/</LenovoBlog>-->
+	<!--<ThinkAuthentecDownload_CN>http://think.lenovo.com.cn/support/driver/viewdriver.aspx?sn={1}</ThinkAuthentecDownload_CN>
+	-->
+	<ShopBatteryURL>http://shop.lenovo.com/SEUILibrary/controller/e/web/LenovoPortal/{0}/catalog.workflow:find-compatible-items?category-id=4364BD0F20B94413B5AD6E684D2848E9&amp;model-number={1}&amp;cat=1&amp;cid=ww:direct:Kt8Uos</ShopBatteryURL>
+	
+</config>

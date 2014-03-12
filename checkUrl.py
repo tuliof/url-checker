@@ -24,17 +24,44 @@ class UrlCheck(object):
 	def redirected(self):
 		return self.url != self.requestUrl
 
+	def setUrl(self, url):
+		self.url = url
+		self.requestUrl = url
+
 class UrlValidator(object):
 	_urlXmlPath = ''
 	_resultCsvPath = ''
+	_machineSerialNumber = ''
 	_debugMode = False
+	_langDict =	{
+	'DK': 'en',
+	'DE': 'de',
+	'US': 'en',
+	'ES': 'es',
+	'FI': 'en',
+	'FR': 'fr',
+	'IT': 'it',
+	'JP': 'ja',
+	'KR': 'ko',
+	'NO': 'en',
+	'NL': 'en',
+	'PL': 'pl',
+	'BR': 'pt',
+	'PT': 'pt',
+	'RU': 'ru',
+	'SE': 'en',
+	'CN': 'zh',
+	'HK': 'zh',
+	'TW': 'zh'
+	}
 
 	def enableDebug(self):
 		self._debugMode = True
 
-	def __init__(self, urlXmlPath, resultCsvPath):
+	def __init__(self, urlXmlPath, resultCsvPath, serialNumber):
 		self._urlXmlPath = urlXmlPath
-
+		self._machineSerialNumber = serialNumber
+		
 		if len(resultCsvPath) == 0:
 			self._resultCsvPath = os.getcwd() + '\\urlCheck.csv'
 		else:
@@ -50,48 +77,60 @@ class UrlValidator(object):
 		# read urls from the xml file
 		urlCheckList = self.readLscUrls(self._urlXmlPath)
 		# test the urls
-		finalUrlCheckList = self.checkUrl(urlCheckList)
+		finalUrlCheckList = self.checkUrls(urlCheckList)
 		# write the results to a csv
 		self.generateReport(finalUrlCheckList)
 		if self._debugMode:
-			print 'Number of URLs: %s, Processed: %s' % (len(urlCheckList), len(finalUrlCheckList))
+			print 'Number of URLs processed: %s' % len(finalUrlCheckList)
 
-	def checkUrl(self, urlCheckList):
+	def checkUrls(self, urlCheckList):
 		finalUrlCheckList = []
 		for urlCheck in urlCheckList:
-			if self._debugMode:
-				print 'Testing url: %s' % urlCheck.url
-			try:
-				response = urllib2.urlopen(urlCheck.url)
-				urlCheck.requestUrl = response.geturl()
-				urlCheck.code = response.code
-				if urlCheck.redirected:
-					# Don't know how to differentiate between a 301 and a 302.
-					urlCheck.code = 301
-				response.close()
-				finalUrlCheckList.append(urlCheck)
-			except urllib2.URLError as e:
-				#failed to reach server
-				if self._debugMode:
-					print 'URLError: %s' % e.reason
-				if str(e.reason).lower() == 'not found':
-					urlCheck.code = 404
-				else:
-					urlCheck.code = e.reason
-			except urllib2.HTTPError as e:
-				urlCheck.code = e.code
-			if self._debugMode:
-				print 'Response code: %s' % urlCheck.code
-				if urlCheck.redirected:
-					print 'Redirected to %s' % urlCheck.requestUrl
+			# If the url needs serial number, replace {1} by the serial
+			if urlCheck.url.find('{1}') != -1 and len(self._machineSerialNumber) > 0:
+				urlCheck.setUrl(urlCheck.url.replace('{1}', self._machineSerialNumber))
+			if urlCheck.url.find('{0}') != -1:
+				finalUrlCheckList.extend(self.checkSingleUrl_Lang(urlCheck))
+			else:
+				finalUrlCheckList.append(self.checkSingleUrl(urlCheck))
 		return finalUrlCheckList
 
-	def testUrlThreaded(self, urlCheckList, numberOfThreads):
-		# Start the threads, passing a list for each one to process
-		for i in xrange(0, len(urlCheckList), numberOfThreads):
-			t = Thread(target=self.checkUrl, args=(urlCheckList[i:i+numberOfThreads]))
-			#self.threadList.append(t)
-			yield t.start()
+	def checkSingleUrl_Lang(self, baseUrlCheck):
+		urlCheckList = []
+		for lang in self._langDict.values():
+			# Create a new UrlCheck for the language
+			langUrlCheck = UrlCheck(baseUrlCheck.tag + '_' + lang, baseUrlCheck.url.replace('{0}', lang))
+			if self._debugMode:
+				print 'Testing language: %s' % lang
+			urlCheckList.append(self.checkSingleUrl(langUrlCheck))
+		return urlCheckList
+
+	def checkSingleUrl(self, urlCheck):
+		if self._debugMode:
+			print 'Testing url: %s' % urlCheck.url
+		try:
+			response = urllib2.urlopen(urlCheck.url)
+			urlCheck.requestUrl = response.geturl()
+			urlCheck.code = response.code
+			if urlCheck.redirected:
+				# Don't know how to differentiate between a 301 and a 302.
+				urlCheck.code = 301
+			response.close()
+		except urllib2.URLError as e:
+			#failed to reach server
+			if self._debugMode:
+				print 'URLError: %s' % e.reason
+			if str(e.reason).lower() == 'not found':
+				urlCheck.code = 404
+			else:
+				urlCheck.code = e.reason
+		except urllib2.HTTPError as e:
+			urlCheck.code = e.code
+		if self._debugMode:
+			print 'Response code: %s' % urlCheck.code
+			if urlCheck.redirected:
+				print 'Redirected to: %s' % urlCheck.requestUrl
+		return urlCheck
 
 	def generateReport(self, urlCheckList):
 		try:
@@ -177,7 +216,7 @@ class UrlValidator(object):
 		print headers
 
 def main():
-	usage = 'usage: %prog [options] urlsFile'
+	usage = 'usage: %prog [options] urlsFile machineSerialNumber'
 	outFile = os.path.dirname(os.path.abspath(__file__))
 	inFile = ''
 	parser = OptionParser(usage=usage, version='%prog 1.0')
@@ -195,14 +234,15 @@ def main():
 	else:
 		outFile = options.outputFile
 	
-	if len(args) != 1:
+	if len(args) != 2:
 		parser.error('incorrect number of arguments')
 	else:
 		inFile = args[0]
+		serial = args[1]
 
 	# Create the url validator and run the check
 	tstart = time.clock()
-	urlValidator = UrlValidator(inFile, outFile)
+	urlValidator = UrlValidator(inFile, outFile, serial)
 	if options.debug:
 		urlValidator.enableDebug()
 	urlValidator.validate()
