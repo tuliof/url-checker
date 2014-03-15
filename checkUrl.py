@@ -1,9 +1,8 @@
 #import library to do http requests:
 import urllib2
 #threads used to test the urls
-from threading import Thread
-import os
-import sys
+import Queue, threading
+import os, sys
 from optparse import OptionParser
 #import easy to use xml parser called minidom:
 from xml.dom.minidom import parseString
@@ -33,6 +32,8 @@ class UrlValidator(object):
 	_resultCsvPath = ''
 	_machineSerialNumber = ''
 	_debugMode = False
+	_threadResult = []
+	useThreads = False
 	_langDict =	{
 	'DK': 'en',
 	'DE': 'de',
@@ -77,7 +78,11 @@ class UrlValidator(object):
 		# read urls from the xml file
 		urlCheckList = self.readLscUrls(self._urlXmlPath)
 		# test the urls
-		finalUrlCheckList = self.checkUrls(urlCheckList)
+		if self.useThreads:
+			print 'Using threads'
+			finalUrlCheckList = self.checkUrls_threaded(urlCheckList)
+		else:
+			finalUrlCheckList = self.checkUrls(urlCheckList)
 		# write the results to a csv
 		self.generateReport(finalUrlCheckList)
 		if self._debugMode:
@@ -94,6 +99,33 @@ class UrlValidator(object):
 			else:
 				finalUrlCheckList.append(self.checkSingleUrl(urlCheck))
 		return finalUrlCheckList
+
+	def checkUrls_threaded(self, urlCheckList):
+		# Start the threads, passing a list for each one to process
+		q = Queue.Queue()
+		for url in urlCheckList:
+			q.put(url)
+		
+		thread_count = 5
+		for i in range(thread_count):
+			t = threading.Thread(target=worker, args = (q,))
+			# Daemon means that this process won't block the main thread.
+			# If the main Thread closes, it will also terminate.
+			t.daemon = True
+			t.start()
+		# Block until all the tasks are done
+		q.join()
+		return self._threadResult
+
+	def worker(self, queue):
+		queue_full = True
+		while queue_full:
+			try:
+				# Retrieve first item from Queue and process
+				urlList = queue.get(False) # Non blocking
+				self._threadResult.extend(self.checkUrls(urlList))
+			except Queue.Empty:
+				queue_full = False
 
 	def checkSingleUrl_Lang(self, baseUrlCheck):
 		urlCheckList = []
@@ -227,6 +259,9 @@ def main():
 		default=':@20465461654', 
 		help='write output to FILE, will write result.csv \
 		to same path as the program if none is provided.')
+	parser.add_option('-t', '--threaded',
+		action='store_true', dest='useThreads', default=False,
+		help='if set to true will run concurrent requests, it will speed the test.')
 	(options, args) = parser.parse_args()
 	
 	if options.outputFile == ':@20465461654':
