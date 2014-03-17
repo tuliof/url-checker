@@ -281,9 +281,9 @@ def main():
 	if options.debug:
 		urlValidator.enableDebug()
 	urlValidator.validate()
-	tend = time.clock()
+	
 	if options.debug:
-		print 'Time spent %.2gs' % (tend-tstart)
+		print 'Time spent %s' % (time.clock()-tstart)
 	
 
 def testProgram():
