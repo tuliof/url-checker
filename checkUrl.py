@@ -35,7 +35,7 @@ class UrlValidator(object):
 	_debugMode = False
 	_threadResult = []
 	useThreads = False
-	_langDict =	{
+	_langDict = {
 	'DK': 'en',
 	'DE': 'de',
 	'US': 'en',
@@ -80,7 +80,6 @@ class UrlValidator(object):
 		urlCheckList = self.readLscUrls(self._urlXmlPath)
 		# test the urls
 		if self.useThreads:
-			print 'Using threads'
 			finalUrlCheckList = self.checkUrls_threaded(urlCheckList)
 		else:
 			finalUrlCheckList = self.checkUrls(urlCheckList)
@@ -238,16 +237,6 @@ class UrlValidator(object):
 		for urlCheck in urlList:
 			print(urlCheck.tag, "-", urlCheck.url)
 
-	def printRequestResult(self, response):
-		print 'RESPONSE:', response
-		print 'URL     :', response.geturl()
-		print 'CODE    :', response.code
-		headers = response.info()
-		print 'DATE    :', headers['date']
-		print 'HEADERS :'
-		print '---------'
-		print headers
-
 def main():
 	usage = 'usage: %prog [options] urlsFile machineSerialNumber'
 	outFile = os.path.dirname(os.path.abspath(__file__))
@@ -285,21 +274,15 @@ def main():
 	
 	if options.debug:
 		print 'Time spent %s' % (time.clock()-tstart)
-	
-
-def testProgram():
-	urlValidator = UrlValidator('C:\Program Files\Lenovo\Lenovo Solution Center\lscUrls.xml', 'C:\Users\saotfern\Desktop\urlCheck.csv')
-	#urlValidator.validate('C:\Users\saotfern\Desktop\lscUrls_short.xml')
 
 if __name__ == "__main__":
 	main()
-	#testProgram()
 
 '''
 TODO:
 OK Receive command line arguments - Path to xml and csv
 OK Return usage in case no arguments are passed
 OK Generate executable
-. Add argument -D for debug - it'll print each url to the shell
+OK Add argument -D for debug - it'll print each url to the shell
 . Check an implementation of checkUrl using -> http://docs.python.org/2/library/httplib.html
 '''
