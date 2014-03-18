@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #import library to do http requests:
 import urllib2
 #threads used to test the urls
