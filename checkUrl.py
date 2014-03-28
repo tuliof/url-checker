@@ -133,13 +133,13 @@ class UrlValidator(object):
 			# Create a new UrlCheck for the language
 			langUrlCheck = UrlCheck(baseUrlCheck.tag + '_' + lang, baseUrlCheck.url.replace('{0}', lang))
 			if self._debugMode:
-				print 'Testing language: %s' % lang
+				print '\nTesting language: %s' % lang
 			urlCheckList.append(self.checkSingleUrl(langUrlCheck))
 		return urlCheckList
 
 	def checkSingleUrl(self, urlCheck):
 		if self._debugMode:
-			print 'Testing url: %s' % urlCheck.url
+			print '\nTesting url: %s' % urlCheck.url
 		try:
 			response = urllib2.urlopen(urlCheck.url)
 			urlCheck.requestUrl = response.geturl()
@@ -169,8 +169,8 @@ class UrlValidator(object):
 			f = open(self._resultCsvPath, 'w')
 			f.write('Tag,Url,HTTP Code,Redirected,New Url\n')
 			for urlCheck in urlCheckList:
-				if self._debugMode:
-					print '%s, %s, %s, %s\n' % (urlCheck.tag, urlCheck.url, urlCheck.code, urlCheck.requestUrl if urlCheck.redirected() else '')
+				#if self._debugMode:
+					#print '%s, %s, %s, %s\n' % (urlCheck.tag, urlCheck.url, urlCheck.code, urlCheck.requestUrl if urlCheck.redirected() else '')
 				f.write('%s, %s, %s, %s\n' % (urlCheck.tag, urlCheck.url, urlCheck.code, urlCheck.requestUrl if urlCheck.redirected() else ''))
 		except IOError as err:
 			if self._debugMode:
@@ -243,9 +243,9 @@ def main():
 	RESULT_FILE_NAME = 'result.csv'
 	inFile = ''
 	parser = OptionParser(usage=usage, version='%prog 1.0')
-	parser.add_option('-d', '--debug', 
-		action='store_true', dest='debug', default=False, 
-		help='print the url and the request result[default: %default]')
+	parser.add_option('-v', '--verbose', 
+		action='store_true', dest='verbose', default=False, 
+		help='shows details about the running requests, will also display other infos about the process[default: %default]')
 	parser.add_option('-o', '--output', dest='outputFile', metavar='FILE', 
 		default=os.path.join(os.path.dirname(os.path.abspath(__file__)), RESULT_FILE_NAME),
 		help='write output to FILE, will write ' + RESULT_FILE_NAME + ' to same path as the program if none is provided.')
@@ -264,12 +264,12 @@ def main():
 	# Create the url validator and run the check
 	tstart = time.clock()
 	urlValidator = UrlValidator(inFile, options.outputFile, serial)
-	if options.debug:
+	if options.verbose:
 		urlValidator.enableDebug()
 	
 	urlValidator.validate()
 	
-	if options.debug:
+	if options.verbose:
 		print 'Time spent %s' % (time.clock()-tstart)
 
 if __name__ == "__main__":
