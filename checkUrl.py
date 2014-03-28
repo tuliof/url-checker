@@ -239,25 +239,21 @@ class UrlValidator(object):
 
 def main():
 	usage = 'usage: %prog [options] urlsFile machineSerialNumber'
-	outFile = os.path.dirname(os.path.abspath(__file__))
+	#outFile = os.path.dirname(os.path.abspath(__file__))
+	RESULT_FILE_NAME = 'result.csv'
 	inFile = ''
 	parser = OptionParser(usage=usage, version='%prog 1.0')
 	parser.add_option('-d', '--debug', 
 		action='store_true', dest='debug', default=False, 
 		help='print the url and the request result[default: %default]')
 	parser.add_option('-o', '--output', dest='outputFile', metavar='FILE', 
-		default=':@20465461654', 
-		help='write output to FILE, will write result.csv \
-		to same path as the program if none is provided.')
+		default=os.path.join(os.path.dirname(os.path.abspath(__file__)), RESULT_FILE_NAME),
+		help='write output to FILE, will write ' + RESULT_FILE_NAME + ' to same path as the program if none is provided.')
 	parser.add_option('-t', '--threaded',
 		action='store_true', dest='useThreads', default=False,
 		help='if set to true will run concurrent requests, it will speed the test.')
-	(options, args) = parser.parse_args()
 	
-	if options.outputFile == ':@20465461654':
-		outFile = os.path.join(outFile, 'result.csv')
-	else:
-		outFile = options.outputFile
+	(options, args) = parser.parse_args()
 	
 	if len(args) != 2:
 		parser.error('incorrect number of arguments')
@@ -267,9 +263,10 @@ def main():
 
 	# Create the url validator and run the check
 	tstart = time.clock()
-	urlValidator = UrlValidator(inFile, outFile, serial)
+	urlValidator = UrlValidator(inFile, options.outputFile, serial)
 	if options.debug:
 		urlValidator.enableDebug()
+	
 	urlValidator.validate()
 	
 	if options.debug:
@@ -280,9 +277,5 @@ if __name__ == "__main__":
 
 '''
 TODO:
-OK Receive command line arguments - Path to xml and csv
-OK Return usage in case no arguments are passed
-OK Generate executable
-OK Add argument -D for debug - it'll print each url to the shell
 . Check an implementation of checkUrl using -> http://docs.python.org/2/library/httplib.html
 '''
