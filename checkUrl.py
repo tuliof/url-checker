@@ -237,9 +237,18 @@ class UrlValidator(object):
 		for urlCheck in urlList:
 			print(urlCheck.tag, "-", urlCheck.url)
 
+
+def module_path(local_function):
+	import inspect
+	''' returns the module path without the use of __file__.  Requires a function defined 
+	locally in the module. Won't require if you use "lambda _: None" as param without the quotes.
+	from http://stackoverflow.com/questions/729583/getting-file-path-of-imported-module'''
+	return os.path.abspath(inspect.getsourcefile(local_function))
+
 def main():
 	usage = 'usage: %prog [options] urlsFile machineSerialNumber'
 	#outFile = os.path.dirname(os.path.abspath(__file__))
+	script_path = module_path(lambda _: None)
 	RESULT_FILE_NAME = 'result.csv'
 	inFile = ''
 	parser = OptionParser(usage=usage, version='%prog 1.0')
@@ -247,7 +256,7 @@ def main():
 		action='store_true', dest='verbose', default=False, 
 		help='shows details about the running requests, will also display other infos about the process[default: %default]')
 	parser.add_option('-o', '--output', dest='outputFile', metavar='FILE', 
-		default=os.path.join(os.path.dirname(os.path.abspath(__file__)), RESULT_FILE_NAME),
+		default=os.path.join(os.path.dirname(os.path.abspath(script_path)), RESULT_FILE_NAME),
 		help='write output to FILE, will write ' + RESULT_FILE_NAME + ' to same path as the program if none is provided.')
 	parser.add_option('-t', '--threaded',
 		action='store_true', dest='useThreads', default=False,
