@@ -18,6 +18,6 @@ Options:
 ```
 
 ## Generate a executable:
-You will need to have py2exe installed - www.py2exe.org.
+You will need to have py2exe installed - (py2exe.org)[http://www.py2exe.org].
 
 Run on the shell ``setup.py``, the executable will be placed under ``\dist\checkUrl.exe``.
